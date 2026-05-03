@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat Easy - Sugestões de Receitas</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="eyebrow">Eat Easy</div>
+            <h1>Receitas com os ingredientes que você tem</h1>
+            <p>Digite os ingredientes que você tem em casa e descubra receitas fáceis e rápidas.</p>
+        </header>
+
+        <section class="card input-card">
+            <div class="input-header">
+                <div>
+                    <h2>Adicione seus ingredientes</h2>
+                    <p>Use a caixa abaixo e pressione Enter para criar suas tags.</p>
+                </div>
+                <span class="pill">Funcional</span>
+            </div>
+
+            <div class="input-area">
+                <input id="ingredienteInput" type="text" placeholder="Ex: tomate, queijo, ovos" autocomplete="off">
+                <button id="btnSugerir" class="btn btn-primary">Sugerir</button>
+                <div class="input-suggestions"></div>
+            </div>
+
+            <div class="tags" id="ingredientesTags"></div>
+            <div class="actions-row">
+                <button id="btnLimpar" class="btn btn-secondary">Limpar</button>
+            </div>
+            <div class="error-banner" id="errorMessage"></div>
+        </section>
+
+        <section class="card info-card">
+            <h3>Como funciona</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>1</strong>
+                    <p>Adicione ingredientes que você já tem em casa.</p>
+                </div>
+                <div class="info-item">
+                    <strong>2</strong>
+                    <p>Veja receitas que combinam com seus ingredientes.</p>
+                </div>
+                <div class="info-item">
+                    <strong>3</strong>
+                    <p>Abra a receita e prepare em poucos minutos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-card" id="resultsSection">
+            <div class="results-header">
+                <div>
+                    <h2 id="resultsTitle">Receitas sugeridas</h2>
+                    <p id="resultsInfo">Aguarde os resultados após escolher seus ingredientes.</p>
+                </div>
+                <div class="results-summary" id="resultsSummary"></div>
+            </div>
+            <div id="loading" class="loading">Buscando receitas...</div>
+            <div class="cards-grid" id="recipeGrid"></div>
+            <div class="empty-state" id="emptyState">
+                <h3>Nenhuma receita encontrada ainda</h3>
+                <p>Adicione ingredientes para encontrar receitas compatíveis.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="recipeModal" class="modal">
+        <div class="modal-content"></div>
+    </div>
+
+    <script>
+        window.RECIPES = [
+            { id: 1, nome: 'Salada Verde', ingredientes: ['alface', 'tomate', 'cebola', 'azeite'], modo_preparo: 'Lave e pique todos os ingredientes. Misture e tempere com azeite, sal e limão.', tempo_preparo: 10, categoria: 'Vegetariano' },
+            { id: 2, nome: 'Macarrão à Bolonhesa', ingredientes: ['macarrão', 'carne moída', 'molho de tomate', 'cebola', 'alho'], modo_preparo: 'Cozinhe o macarrão. Refogue cebola e alho, adicione carne moída e molho.', tempo_preparo: 30, categoria: 'Carnes' },
+            { id: 3, nome: 'Omelete de Queijo', ingredientes: ['ovos', 'queijo', 'manteiga', 'sal', 'pimenta'], modo_preparo: 'Bata os ovos, derreta a manteiga e cozinhe a omelete com queijo.', tempo_preparo: 12, categoria: 'Café da manhã' },
+            { id: 4, nome: 'Sopa de Cenoura', ingredientes: ['cenoura', 'caldo de legumes', 'cebola', 'alho', 'sal'], modo_preparo: 'Cozinhe os legumes no caldo, bata e tempere a gosto.', tempo_preparo: 25, categoria: 'Sopas' },
+            { id: 5, nome: 'Arroz com Feijão', ingredientes: ['arroz', 'feijão', 'cebola', 'alho', 'azeite'], modo_preparo: 'Refogue os temperos, cozinhe o feijão e depois o arroz.', tempo_preparo: 35, categoria: 'Clássico' },
+            { id: 6, nome: 'Frittata', ingredientes: ['ovos', 'queijo', 'cebola', 'sal', 'pimenta'], modo_preparo: 'Bata os ovos com queijo, refogue cebola e cozinhe a mistura na frigideira.', tempo_preparo: 20, categoria: 'Café da manhã' },
+            { id: 7, nome: 'Caldo de Legumes', ingredientes: ['cenoura', 'batata', 'cebola', 'água', 'sal'], modo_preparo: 'Cozinhe os legumes na água até ficarem macios.', tempo_preparo: 30, categoria: 'Sopas' },
+            { id: 8, nome: 'Estrogonofe', ingredientes: ['carne bovina', 'cebola', 'caldo de carne', 'molho inglês', 'creme de leite'], modo_preparo: 'Refogue a carne com cebola, adicione os molhos e finalize com creme de leite.', tempo_preparo: 40, categoria: 'Carnes' }
+        ];
+    </script>
+    <script src="static/app.js"></script>
+</body>
+</html>
